@@ -1,8 +1,41 @@
 {% extends "layout.html" %}
 
 {% block body %}
-<div class="container">
-    <h1>Welcome to My Awesome Website</h1>
-    <p>This is the homepage content. </p>
-</div>
+    <h1>Practizr</h1>
+    <p>Improve your guitar skills</p>
+
+<form action="/addrow" method="post">
+    <label for="dur">Duration in minutes:</label>
+    <input type= "number" min=1 max=60 name="duration" id="dura">
+
+    <label for="area">Area of expertise:</label>
+    <select name="area" id="area">
+        <!--- TODO: Write  functionto generate this with jinja-->
+        <option value="tecnhnique">Technique</option>
+        <option value="theory">Theory</option>
+        <option value="repertoire">Repertoire</option>
+    </select>
+
+    <label for="item">What to work on:</label>
+    <select name="item" id="item">
+        <!-- Write function to generate list based on area's value-->
+        <option></option>
+    </select>
+
+    <label for="note">Note</label>
+    <input type="text" name="note" id="note">
+
+    <button type="submit">Add</button>
+</form>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul class=flashes>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
 {% endblock %}
