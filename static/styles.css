@@ -1,0 +1,11 @@
+body {
+  text-align: center;
+  font-family: Arial, Helvetica, 'Noto Sans', sans-serif;
+  margin: auto;
+}
+
+table {
+  margin: auto;
+  margin-top: 1em;
+  text-align: center;
+}

@@ -10,10 +10,10 @@
 
     <label for="area">Area of expertise:</label>
     <select name="area" id="area">
-        <!--- TODO: Write  functionto generate this with jinja-->
-        <option value="tecnhnique">Technique</option>
-        <option value="theory">Theory</option>
-        <option value="repertoire">Repertoire</option>
+        <option>Choose one</option>
+        {% for item in area_list %}
+            <option value="{{ item.lower() }}">{{ item }}</option>
+        {% endfor %}
     </select>
 
     <label for="item">What to work on:</label>
@@ -27,15 +27,25 @@
 
     <button type="submit">Add</button>
 </form>
-
-    {% with messages = get_flashed_messages() %}
-        {% if messages %}
-            <ul class=flashes>
-            {% for message in messages %}
-            <li>{{ message }}</li>
-            {% endfor %}
-            </ul>
-        {% endif %}
-    {% endwith %}
+<table>
+    <thead>
+        <tr>
+            <th>Duration</th>
+            <th>Area</th>
+            <th>Item</th>
+            <th>Note</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for row in practice_table %}
+        <tr>
+            <td>{{row.duration}}</td>
+            <td>{{row.area}}</td>
+            <td>{{row.item}}</td>
+            <td>{{row.note}}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
 
 {% endblock %}
