@@ -1,5 +1,7 @@
 {% extends "layout.html" %}
 
+{% block title %}Index{% endblock %}
+
 {% block body %}
     <h1>Practizr</h1>
     <p>Improve your guitar skills</p>
@@ -11,8 +13,8 @@
     <label for="area">Area of expertise:</label>
     <select name="area" id="area">
         <option>Choose one</option>
-        {% for item in area_list %}
-            <option value="{{ item.lower() }}">{{ item }}</option>
+        {% for area in area_list %}
+            <option value="{{ area.lower() }}">{{ area }}</option>
         {% endfor %}
     </select>
 
@@ -47,5 +49,4 @@
     {% endfor %}
     </tbody>
 </table>
-
 {% endblock %}

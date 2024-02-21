@@ -1,7 +1,17 @@
+function get_list(value) {
+    if (value == "Technique"){
+        item_list.innerHTML = '<option value="ap">AP</option><option value="dp">DP</option><option value="cc">CC</option>'
+    }
+    return
+}
+
 document.addEventListener('DOMContentLoaded', function() {
-    let area_select = document.querySelector('#area')
-    area_select.addEventListener('change', function(event) {
-        console.log("area value changed");
-        /*TODO function to */
-    })
-})
+    let area_selected = document.querySelector('#area');
+    var item_list = document.querySelector('#item');
+    area_selected.addEventListener('change', function() {
+        if (this.value == "technique"){
+            item_list.innerHTML = '<option value="ap">AP</option><option value="dp">DP</option><option value="cc">CC</option>';
+        }
+    });
+    }
+);
