@@ -3,4 +3,4 @@ def is_empty(username=None, password=None):
         return "Username required."
     if password is None:
         return "Password required."
-    return False
+    return None

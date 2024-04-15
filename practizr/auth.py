@@ -17,13 +17,13 @@ def register():
     if request.method == "POST":
         username = request.form.get("username")
         password = request.form.get("password")
-        db = get_db
+        db = get_db()
         message = is_empty(username=username, password=password)
 
         if message is None:
             try:
                 db.execute(
-                    "INSTERT INTO user (username, password_hash) VALUES (?, ?)",
+                    "INSERT INTO user (username, password_hash) VALUES (?, ?)",
                     (username, generate_password_hash(password)),
                 )
                 db.commit()
@@ -44,6 +44,10 @@ def login():
         password = request.form["password"]
         db = get_db()
         message = None
+
+        
+
+    return render_template("auth/login.html")
 
         
         

@@ -6,19 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/static/styles.css">
     <script type="text/javascript" src="/static/core.js"></script>
-    <title>Practizr | {% block title %}{% endblock %}</title>
+    <title>Practizr: {% block title %}{% endblock %}</title>
 </head>
 
 <body>
+    <nav>
+        <ul>
+            <a href="{{ url_for('auth.register') }}">Register</a>
+            <a href="{{ url_for('auth.login') }}">Log in</a>
+            <a href="{{ url_for('views.index') }}">Index</a>
+            <a href="{{ url_for('views.templates') }}">Templates</a>
+            <a href="{{ url_for('views.items') }}">Custom Items</a>
+        </ul>
+    </nav>
+
     <header>
         {% block header %}{% endblock %}
-        <nav>
-            <ul>
-                <a href="{{ url_for('views.index') }}">Index</a>
-                <a href="{{ url_for('views.templates') }}">Templates</a>
-                <a href="{{ url_for('views.items') }}">Custom Items</a>
-            </ul>
-        </nav>
     </header>
 
     <main>

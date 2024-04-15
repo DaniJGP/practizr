@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+
+{% block title %}Log In{% endblock %}
+
+{% block main %}
+  <form action="/" method="post">
+    <input type="text" name="username" placeholder="Enter username">
+    <input type="password" name="password" placeholder="Enter password">
+    <button type="submit">Log In</button>
+  </form>
+{% endblock %}
