@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/styles.css">
+    <script type="text/javascript" src="/static/core.js"></script>
+    <title>Practizr | {% block title %}{% endblock %}</title>
+</head>
+
+<body>
+    <header>
+        {% block header %}{% endblock %}
+        <nav>
+            <ul>
+                <a href="{{ url_for('views.index') }}">Index</a>
+                <a href="{{ url_for('views.templates') }}">Templates</a>
+                <a href="{{ url_for('views.items') }}">Custom Items</a>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        {% block main %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; Daniela Guardia, 2024</p>
+    </footer>
+</body>
+
+</html>
