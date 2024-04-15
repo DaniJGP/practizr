@@ -24,10 +24,7 @@ def items():
     return render_template("views/items.html")
 
 
-@views_bp.route("/addrow", methods=["GET", "POST"])
+@views_bp.route("/addrow", methods=["POST"])
 def addrow():
-    if request.method == "POST":
-        return render_template("views/index.html")
-
-    else:
-        return render_template("views/index.html")
+    # TODO: Use JS fetch() to add rows to user template
+    return redirect("/")
