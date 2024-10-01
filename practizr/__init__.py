@@ -9,6 +9,8 @@ def create_app():
         DATABASE=os.path.join(app.instance_path, "practizr.sqlite")
     )
 
+    app.secret_key = "Change this password in production"
+
     app.config.from_pyfile('config.py', silent=True)
 
     try:

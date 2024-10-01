@@ -18,13 +18,21 @@ CREATE TABLE template (
     FOREIGN KEY (user_id) REFERENCES user (id)
 );
 
-DROP TABLE IF EXISTS item;
+DROP TABLE IF EXISTS area_item;
 
-CREATE TABLE item (
+CREATE TABLE area_item (
+    id INTEGER PRIMARY KEY,
+    area TEXT NOT NULL,
+    item TEXT NOT NULL
+);
+
+DROP TABLE IF EXISTS custom_item;
+
+CREATE TABLE custom_item (
     id INTEGER PRIMARY KEY,
     user_id INTEGER NOT NULL,
     area TEXT NOT NULL,
-    item TEXT NOT NULL,
+    item_name TEXT NOT NULL,
     note TEXT,
     FOREIGN KEY (user_id) REFERENCES user (id)
 );

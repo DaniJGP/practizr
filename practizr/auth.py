@@ -1,6 +1,6 @@
 from functools import wraps
 
-from flask import Blueprint, redirect, render_template, request, flash, url_for
+from flask import Blueprint, redirect, render_template, request, flash, url_for, session
 
 from practizr.db import get_db
 
@@ -43,13 +43,29 @@ def login():
         username = request.form["username"]
         password = request.form["password"]
         db = get_db()
-        message = None
+        message = is_empty(username=username, password=password)
 
+        if message is None:
+            row = db.execute("SELECT * FROM user WHERE username = ?", username).fetchone
+            if row is None:
+                message = "User does not exist."
+            else:
+                if check_password_hash(row["password_hash"], password):
+                    session["user_id"] = row["id"]
+                    session["username"] = row["username"]
+                    redirect(url_for("views.index"))
+                else:
+                    message = "Wrong password."        
         
+        flash(message)
 
     return render_template("auth/login.html")
 
-        
+
+@auth_bp.route("/logout", methods=["POST"])
+def logout():
+    session.clear()
+    redirect(url_for("views.index"))
         
 
             

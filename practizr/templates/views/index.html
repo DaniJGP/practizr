@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block header %}
-    <h1>Practizr: {% block title %}Index{% endblock %}</h1>
+    <h1>Practizr{% block title %}{% endblock %}</h1>
 {% endblock %}
 
 {% block main %}
@@ -12,9 +12,8 @@
 
     <label for="area">Area of expertise:</label>
     <select name="area" id="area">
-        <option>Choose one</option>
         {% for area in areas %}
-        <option value="{{ area }}">{{ area }}</option>
+          <option value="{{ area }}">{{ area }}</option>
         {% endfor %}
     </select>
 

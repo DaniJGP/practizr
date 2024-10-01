@@ -6,11 +6,11 @@ Date: 2010
 Availability: https://flask.palletsprojects.com/en/3.0.x/tutorial/database/
 """
 
-# TODO: switch to SQLAlquemy
 import click
 import sqlite3
 
 from flask import current_app, g
+
 
 def get_db():
     if "db" not in g:
@@ -31,7 +31,12 @@ def init_db():
     db = get_db()
 
     with current_app.open_resource("schema.sql") as f:
-        db.executescript(f.read().decode("utf8"))
+        db.executescript(f.read().decode("utf-8"))
+    db.execute(
+        "INSERT INTO area_item (area, item) VALUES (?, ?)",
+        ("foo", "bar"),
+    )
+    db.commit()
 
 
 @click.command("init-db")
