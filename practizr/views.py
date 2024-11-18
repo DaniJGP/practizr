@@ -6,16 +6,16 @@ from practizr.db import get_db
 views_bp = Blueprint("views", __name__)
 
 
-@views_bp.route("/", methods=["GET", "POST"])
+@views_bp.route("/", methods=["GET"])
 def index():
-    if request.method == "POST":
-        return render_template("views/index.html")
     db = get_db()
+    cursor = db.cursor()
+    item_rows = cursor.execute("SELECT item FROM area_item").fetchall()
+    items = [row['item'] for row in item_rows]
     areas = ["Technique", "Music Theory", "Repertoire", "Transcription", "Ear Training", "Improvisation"]
-    return render_template("views/index.html", areas=areas)
+    return render_template("views/index.html", areas=areas, items=items)
 
 
-# @views_bp.route("/templates", methods=["GET", "POST"])
 # def templates():
 #     return render_template("views/templates.html")
 

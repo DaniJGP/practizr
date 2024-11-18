@@ -1,1 +1,3 @@
-document.querySelector('#area').addEventListener('change', async () => {});
+document.getElementById('area').addEventListener('change', (e) => {
+    
+});

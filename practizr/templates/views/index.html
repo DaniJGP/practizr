@@ -6,12 +6,13 @@
 
 {% block main %}
 
-<form action="/addrow" method="post">
+<form>
     <label for="duration">Duration in minutes:</label>
     <input type="number" min=1 max=60 name="duration" id="duration">
 
     <label for="area">Area of expertise:</label>
     <select name="area" id="area">
+        <option selected disabled value="">Choose an option</option>
         {% for area in areas %}
           <option value="{{ area }}">{{ area }}</option>
         {% endfor %}
