@@ -32,11 +32,6 @@ def init_db():
 
     with current_app.open_resource("schema.sql") as f:
         db.executescript(f.read().decode("utf-8"))
-    db.execute(
-        "INSERT INTO area_item (area, item) VALUES (?, ?)",
-        ("foo", "bar"),
-    )
-    db.commit()
 
 
 @click.command("init-db")

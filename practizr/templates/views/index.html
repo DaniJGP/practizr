@@ -1,66 +1,61 @@
 {% extends "layout.html" %}
 
 {% block header %}
-    <h1>Practizr{% block title %}{% endblock %}</h1>
+<h1>Practizr{% block title %}{% endblock %}</h1>
 {% endblock %}
 
 {% block main %}
 
 <form>
-    <label for="duration">Duration in minutes:</label>
-    <input type="number" min=1 max=60 name="duration" id="duration">
+  <label for="duration">Duration in minutes:</label>
+  <input type="number" min=1 max=60 name="duration" id="duration">
 
-    <label for="area">Area of expertise:</label>
-    <select name="area" id="area">
-        <option selected disabled value="">Choose an option</option>
-        {% for area in areas %}
-          <option value="{{ area }}">{{ area }}</option>
-        {% endfor %}
-    </select>
+  <label for="area">Area of expertise:</label>
+  <select name="area" id="area">
+    <option selected disabled value="">Choose an option</option>
+    {% for area in areas %}
+    <option value="{{ area }}">{{ area }}</option>
+    {% endfor %}
+  </select>
 
-    <!-- TODO Use fetch API to change items list based on the value of area -->
-    <label for="item">What to work on:</label>
-    <select name="item" id="item">
-        {% for item in items %}
-        <option value="{{ item }}">{{ item }}</option>
-        {% endfor %}
-    </select>
+  <label for="item">What to work on:</label>
+  <input type="text" name="item" id="item">
 
-    <label for="note">Note</label>
-    <input type="text" name="note" id="note">
+  <label for="note">Note:</label>
+  <input type="text" name="note" id="note">
 
-    <button type="submit">Add</button>
+  <button type="submit">Add</button>
 </form>
 
 <table>
-    <thead>
-        <tr>
-            <th>Duration</th>
-            <th>Area</th>
-            <th>Item</th>
-            <th>Note</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for row in practice_table %}
-        <tr>
-            <td>{{row.duration}}</td>
-            <td>{{row.area}}</td>
-            <td>{{row.item}}</td>
-            <td>{{row.note}}</td>
-        </tr>
-        {% endfor %}
-    </tbody>
+  <thead>
+    <tr>
+      <th>Duration</th>
+      <th>Area</th>
+      <th>Item</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for row in practice_table %}
+    <tr>
+      <td>{{row.duration}}</td>
+      <td>{{row.area}}</td>
+      <td>{{row.item}}</td>
+      <td>{{row.note}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
 </table>
 
 <section>
-    <ul>
+  <ul>
     <!-- TODO fetch to update totals whenever practice_table gets a new row -->
-        <p>Total duration: </p>
-        <button type="submit" formaction="/save">Save</button>
-        <button type="submit" formaction="/reset">Reset</button>
-        <button type="button" id="run">Run</button>
-    </ul>
+    <p>Total duration: </p>
+    <button type="submit" formaction="/save">Save</button>
+    <button type="submit" formaction="/reset">Reset</button>
+    <button type="button" id="run">Run</button>
+  </ul>
 </section>
 
 {% endblock %}

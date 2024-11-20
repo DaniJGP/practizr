@@ -9,11 +9,9 @@ views_bp = Blueprint("views", __name__)
 @views_bp.route("/", methods=["GET"])
 def index():
     db = get_db()
-    cursor = db.cursor()
-    item_rows = cursor.execute("SELECT item FROM area_item").fetchall()
-    items = [row['item'] for row in item_rows]
-    areas = ["Technique", "Music Theory", "Repertoire", "Transcription", "Ear Training", "Improvisation"]
-    return render_template("views/index.html", areas=areas, items=items)
+    area_rows = db.execute("SELECT * FROM area").fetchall()
+    areas = [row['area_name'] for row in area_rows]
+    return render_template("views/index.html", areas=areas)
 
 
 # def templates():

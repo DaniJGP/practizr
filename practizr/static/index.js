@@ -1,3 +1,1 @@
-document.getElementById('area').addEventListener('change', (e) => {
-    
-});
+console.log('Static url_for is working!');
