@@ -23,9 +23,9 @@ def index():
 #     return render_template("views/items.html")
 
 
-@views_bp.route("/addrow", methods=["POST"])
-def addrow():
-    if request.method == "POST":
-        db = get_db()
+# @views_bp.route("/addrow", methods=["POST"])
+# def addrow():
+#     if request.method == "POST":
+#         db = get_db()
 
-    return redirect("/")
+#     return redirect("/")
