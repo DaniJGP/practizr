@@ -1,18 +1,24 @@
 from flask import Blueprint, flash, redirect, render_template, request, session, url_for
 
 from practizr.db import get_db
+from practizr.auth import login_required
 
 
 views_bp = Blueprint("views", __name__)
 
 
-@views_bp.route("/", methods=["GET"])
+@views_bp.route("/")
 def index():
+    return render_template("views/index.html")
+
+
+@views_bp.route("/dashboard")
+@login_required
+def dashboard():
     db = get_db()
     area_rows = db.execute("SELECT * FROM area").fetchall()
     areas = [row['area_name'] for row in area_rows]
-    return render_template("views/index.html", areas=areas)
-
+    return render_template("views/dashboard.html", areas=areas)
 
 # def templates():
 #     return render_template("views/templates.html")
