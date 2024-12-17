@@ -1,7 +1,11 @@
 {% extends "layout.html" %}
 
+{% block title %}Dashboard{% endblock %}
+
+{% block data_page %}"dashboard"{% endblock %}
+
 {% block header %}
-<h1>Practizr{% block title %}{% endblock %}</h1>
+<h1>Dashboard</h1>
 {% endblock %}
 
 {% block main %}
@@ -30,16 +34,15 @@
 <table>
   <thead>
     <tr>
+      <th>ID</th>
       <th>Duration</th>
       <th>Area</th>
       <th>Item</th>
       <th>Note</th>
-      <th colspan="2">Edit</th>
+      <th colspan="2">Change</th>
     </tr>
   </thead>
-  <tbody id="table-body">
-
-  </tbody>
+  <tbody id="table-body"></tbody>
 </table>
 
 <section>
